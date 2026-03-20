@@ -1,6 +1,10 @@
 # Count
 ## A lightweight CLI tool that counts how many lines of code you have
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/github/license/WhyNaught/count)
+![Downloads](https://img.shields.io/github/downloads/WhyNaught/count/total)
+
 Count is a lightweight CLI tool to count the number of lines of code in a given directory or file! 
 Made in Rust. 
 
@@ -15,6 +19,11 @@ Ensure you have [Curl](https://curl.se/download.html) installed.
 #### MacOS and Linux
 ```bash
 curl -sSL https://raw.githubusercontent.com/WhyNaught/count/main/count/build/install.sh | bash
+```
+
+Afterwards, run: 
+```bash
+chmod +x /usr/local/bin/count
 ```
 
 #### Windows 
