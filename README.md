@@ -10,7 +10,7 @@ Made in Rust.
 
 ### Usage
 ```bash
-count <file/directory path> [--ignore filepath_to_ignore] [--suffix suffix_to_filter_by] [--help]
+count <file/directory path> [--ignore filepath_to_ignore] [--suffix suffix_to_filter_by] [--help] [--num-only]
 ```
 
 ### Installation

@@ -14,6 +14,7 @@ fn main() -> io::Result<()>{
     if args.iter().any(|arg| arg == "--help") {
         println!("\"count\" command usage: count <directory/file path> [--flag1] [--flag2]...");
         println!("--help: instructions on how to use this tool"); 
+        println!("--num-only: will only print the number of lines, nothing else"); 
         println!("--ignore <file_path>: will ignore any files that match the patterns written within this file (common example would be count --ignore .gitignore)"); 
         println!("--suffix <suffix>: will only count files that end with the suffix (.rs, .c, .txt, etc.)");
         return Ok(()); 
@@ -36,6 +37,10 @@ fn main() -> io::Result<()>{
 
     let num_lines = count_lines(path.clone(), &predicates, &root)?; 
 
-    println!("{} has {} lines of code.", path, num_lines); 
+    if args.iter().any(|arg| arg == "--num-only") {
+        println!("{}", num_lines); 
+    } else {
+        println!("{} has {} lines of code.", path, num_lines); 
+    }
     return Ok(()); 
 }
