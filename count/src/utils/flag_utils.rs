@@ -1,4 +1,4 @@
-use std::{fs::{Metadata, read_to_string}, io};
+use std::{fs::{Metadata, read_to_string}, io::{self}};
 use glob::Pattern; 
 
 pub fn get_flag_argument(args: &Vec<String>, flag_name: &str) -> io::Result<String> {
@@ -40,7 +40,8 @@ pub fn get_is_valid_ignore_function(ignore_path: String) -> io::Result<Box<dyn F
     let patterns_to_ignore: Vec<glob::Pattern> = if ignore_path.is_empty() {
         Vec::new()
     } else {
-        read_to_string(ignore_path)?
+        read_to_string(&ignore_path)
+            .map_err(|_| io::Error::new(io::ErrorKind::NotFound, format!("Invalid file path for --ignore: {}", ignore_path)))?
             .lines()
             .filter(|x| !x.is_empty() && !x.starts_with('#'))
             .filter_map(|x| glob::Pattern::new(x).ok())

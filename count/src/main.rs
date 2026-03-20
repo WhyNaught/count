@@ -1,4 +1,4 @@
-use std::{env, fs::{self, Metadata}, io}; 
+use std::{env, fs::{self, Metadata, metadata}, io}; 
 mod utils;
 use crate::utils::{count_lines::count_lines, flag_utils::{get_flag_argument, get_is_valid_ignore_function, get_is_valid_suffix_function}}; 
 
@@ -20,6 +20,12 @@ fn main() -> io::Result<()>{
     }
 
     let path = args[1].clone();
+    let md = metadata(path.clone()); 
+    if md.is_err() {
+        eprintln!("Error: Invalid file/directory path provided: {}", path); 
+        return Ok(()); 
+    }
+
     let root = fs::canonicalize(".")?.into_os_string().into_string().unwrap();
 
     // each function here should return true if a given path is valid 
