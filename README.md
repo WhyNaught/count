@@ -28,11 +28,12 @@ chmod +x /usr/local/bin/count
 
 #### Windows 
 ```powershell
-curl -sSL https://raw.githubusercontent.com/WhyNaught/count/main/count/build/install.ps1 | powershell -Command -
+irm https://raw.githubusercontent.com/WhyNaught/count/main/count/build/install.ps1 | iex
 ```
 
 ### Verify Installation
-Run the following command to verify if the installation was successful:
+First, restart your terminal. 
+Then, run the following command to verify if the installation was successful:
 ```bash
 count --help
 ```
